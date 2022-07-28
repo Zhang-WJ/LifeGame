@@ -1,3 +1,5 @@
+%%raw("require('./index.css')")
+
 let root = ReactDOM.querySelector("#root")
 
 switch root {
