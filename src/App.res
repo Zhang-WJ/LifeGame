@@ -4,8 +4,12 @@ open Toaster
 let make = () => {
   <div>
     <Toaster />
-    <div className={`container mx-auto`} onClick={_ => Toaster.make1->Toaster.success("Success!")}>
-      {React.string("Hello World 1")}
+    <div className="min-h-screen flex flex-col container mx-auto">
+      <header className="p-2 bg-indigo-200">{React.string("Header")}</header>
+      <main className="flex-1 bg-indigo-50 p-2">
+        <div className="mb-20">{React.string("Content1")}</div>
+      </main>
+      <footer className="p-2 bg-indigo-200">{React.string("Footer")}</footer>
     </div>
   </div>
 }

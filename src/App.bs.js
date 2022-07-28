@@ -2,17 +2,20 @@
 'use strict';
 
 var React = require("react");
-var ReactHotToast = require("react-hot-toast").default;
-var ReactHotToast$1 = require("react-hot-toast");
+var ReactHotToast = require("react-hot-toast");
 
 function App(Props) {
-  return React.createElement("div", undefined, React.createElement(ReactHotToast$1.Toaster, {}), React.createElement("div", {
-                  className: "container mx-auto",
-                  onClick: (function (param) {
-                      ReactHotToast.success("Success!");
-                      
-                    })
-                }, "Hello World 1"));
+  return React.createElement("div", undefined, React.createElement(ReactHotToast.Toaster, {}), React.createElement("div", {
+                  className: "min-h-screen flex flex-col container mx-auto"
+                }, React.createElement("header", {
+                      className: "p-2 bg-indigo-200"
+                    }, "Header"), React.createElement("main", {
+                      className: "flex-1 bg-indigo-50 p-2"
+                    }, React.createElement("div", {
+                          className: "mb-20"
+                        }, "Content1")), React.createElement("footer", {
+                      className: "p-2 bg-indigo-200"
+                    }, "Footer")));
 }
 
 var make = App;
