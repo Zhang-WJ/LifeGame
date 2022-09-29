@@ -9,6 +9,13 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    devServer: {
+      static: {
+        directory: path.join(__dirname, 'dist'),
+      },
+      compress: true,
+      port: 9000,
+    },
     module: {
         rules: [
           {
@@ -18,7 +25,8 @@ module.exports = {
         ],
       },
     plugins: [new HtmlWebpackPlugin({
-        template: "./src/index.html"
+        template: "./src/index.html",
+        title: "rescript"
     }),
     new MiniCssExtractPlugin({filename: "[name].css",
     chunkFilename: "[id].css",})]

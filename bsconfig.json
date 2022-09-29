@@ -1,4 +1,4 @@
-{
+{  
   "name": "rescript-project-template",
   "version": "0.0.1",
   "sources": {
@@ -11,7 +11,12 @@
   },
   "suffix": ".bs.js",
   "reason": { "react-jsx": 3 },
-  "bs-dependencies": ["@rescript/react"],
+  "bs-dependencies": [
+    "@rescript/react", 
+    "bs-css",
+    "bs-css-emotion"
+  ],
+  "ppx-flags": ["@davesnx/styled-ppx/ppx"],
   "warnings": {
     "error" : "+101"
   }

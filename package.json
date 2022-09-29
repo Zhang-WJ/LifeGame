@@ -5,7 +5,7 @@
     "build": "rescript",
     "clean": "rescript clean -with-deps",
     "watch-rescript": "rescript build -w ",
-    "watch-dev": "npx webpack --watch",
+    "watch-dev": "webpack serve",
     "start": "concurrently \"npm:watch-*\""
   },
   "keywords": [
@@ -14,8 +14,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@davesnx/styled-ppx": "^0.31.2",
     "@rescript/react": "^0.10.3",
+    "bs-css": "^15.3.0",
+    "bs-css-emotion": "^4.3.0",
     "concurrently": "^7.3.0",
+    "polished": "^4.1.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-hot-toast": "^2.3.0",
     "rescript": "*"
   },
@@ -29,6 +35,7 @@
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.1.6",
     "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
   }
 }
