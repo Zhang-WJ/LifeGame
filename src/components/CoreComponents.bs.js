@@ -5,6 +5,7 @@ var CssJs = require("bs-css-emotion/src/CssJs.bs.js");
 var React = require("react");
 var Polished = require("polished");
 var Caml_option = require("rescript/lib/js/caml_option.js");
+var Css_Js_Core = require("bs-css/src/Css_Js_Core.bs.js");
 
 var deleteProp = ((newProps, key) => delete newProps[key]);
 
@@ -142,7 +143,11 @@ function CoreComponents$Button(Props) {
   var disabledOpt = Props.disabled;
   var children = Props.children;
   var disabled = disabledOpt !== undefined ? disabledOpt : false;
-  Polished.opacify(-0.4, "#" + background);
+  var shadow_1 = Polished.opacify(-0.4, "#" + background);
+  var shadow = {
+    NAME: "hex",
+    VAL: shadow_1
+  };
   var bg = CssJs.hex(background);
   var className = CssJs.style([
         CssJs.fontSize({
@@ -183,7 +188,13 @@ function CoreComponents$Button(Props) {
         CssJs.unsafe("fontWeight", "700"),
         CssJs.unsafe("cursor", "pointer"),
         CssJs.unsafe("transition", "all .15s ease-in"),
-        CssJs.selector(":focus", [CssJs.opacity(0.9)])
+        CssJs.selector(":focus", [
+              CssJs.boxShadows([Css_Js_Core.Shadow.box("zero", "zero", "zero", {
+                          NAME: "pxFloat",
+                          VAL: 4
+                        }, undefined, shadow)]),
+              CssJs.opacity(0.9)
+            ])
       ]);
   return React.createElement("button", {
               "aria-label": label,

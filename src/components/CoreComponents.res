@@ -44,7 +44,7 @@ module Button = {
         cursor: pointer;
         transition: all .15s ease-in;
         :focus {
-          /* box-shadow: 0 0 0 4px $(shadow); */
+          box-shadow: 0 0 0 4px $(shadow);
           opacity: 0.9;
         }
       `)

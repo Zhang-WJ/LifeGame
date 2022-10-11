@@ -2,7 +2,7 @@
   "name": "rescript-project-template",
   "version": "0.0.1",
   "scripts": {
-    "build": "rescript",
+    "build": "rescript build",
     "clean": "rescript clean -with-deps",
     "watch-rescript": "rescript build -w ",
     "watch-dev": "webpack serve",
