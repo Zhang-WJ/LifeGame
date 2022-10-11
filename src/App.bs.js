@@ -2,20 +2,14 @@
 'use strict';
 
 var React = require("react");
-var ReactHotToast = require("react-hot-toast").default;
-var ReactHotToast$1 = require("react-hot-toast");
 
 function App(Props) {
-  return React.createElement("div", undefined, React.createElement(ReactHotToast$1.Toaster, {}), React.createElement("div", {
+  return React.createElement("div", undefined, React.createElement("div", {
                   className: "min-h-screen flex flex-col container mx-auto"
                 }, React.createElement("header", {
                       className: "p-2 bg-indigo-200"
                     }, React.createElement("div", {
-                          className: "flex flex-row items-stretch",
-                          onClick: (function (param) {
-                              ReactHotToast.success("Success!");
-                              
-                            })
+                          className: "flex flex-row items-stretch"
                         }, React.createElement("div", {
                               className: "mr-4"
                             }, React.createElement("img", {

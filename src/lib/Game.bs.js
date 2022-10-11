@@ -69,7 +69,7 @@ var offset = {
   tl: {
     hd: 0,
     tl: {
-      hd: -1,
+      hd: 1,
       tl: /* [] */0
     }
   }
@@ -95,14 +95,14 @@ function getNeighbours(grid, param) {
               }));
 }
 
-function countLiveNeighbours(grid, point) {
+function countLivingNeighbours(grid, point) {
   return Belt_List.length(Belt_List.keep(getNeighbours(grid, point), (function (c) {
                     return c === /* Alive */1;
                   })));
 }
 
 function nextState(point, cellState, grid) {
-  var neighbours = countLiveNeighbours(grid, point);
+  var neighbours = countLivingNeighbours(grid, point);
   if (cellState) {
     if (neighbours === 3 || neighbours === 2) {
       return /* Alive */1;
@@ -146,7 +146,7 @@ exports.makeRandomGrid = makeRandomGrid;
 exports.getTile = getTile;
 exports.offset = offset;
 exports.getNeighbours = getNeighbours;
-exports.countLiveNeighbours = countLiveNeighbours;
+exports.countLivingNeighbours = countLivingNeighbours;
 exports.nextState = nextState;
 exports.nextGeneration = nextGeneration;
 exports.toggleTile = toggleTile;

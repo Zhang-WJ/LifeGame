@@ -1,14 +1,9 @@
-open Toaster
-
 @react.component
 let make = () => {
   <div>
-    <Toaster />
     <div className="min-h-screen flex flex-col container mx-auto">
       <header className="p-2 bg-indigo-200">
-        <div
-          className="flex flex-row items-stretch"
-          onClick={_ => Toaster.make1->Toaster.success("Success!")}>
+        <div className="flex flex-row items-stretch">
           <div className="mr-4">
             <img
               className="inline-block rounded-full ring ring-white w-12 h-12"

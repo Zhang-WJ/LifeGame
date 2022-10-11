@@ -5,6 +5,10 @@ var Config = require("./Config.bs.js");
 var Js_math = require("rescript/lib/js/js_math.js");
 var Belt_HashMapString = require("rescript/lib/js/belt_HashMapString.js");
 
+function avgFrameRate(ticks, startedAt) {
+  return Js_math.ceil(ticks / ((Date.now() - startedAt) / 1000));
+}
+
 var sqrSize = Math.imul(Config.boardSize, Config.boardSize);
 
 var sumOfSquares = (sqrSize << 1);
@@ -28,17 +32,16 @@ function rainbowHSL(y, x) {
     var sumOfPoints = Math.imul(y, y) + Math.imul(x, x) | 0;
     var raw = Math.sqrt(sumOfPoints) * hueIncrement;
     var h = Js_math.floor(raw);
-    var color = "hsl(" + h + ", 100%, 60%)";
     match = [
-      color,
+      h,
       false
     ];
   }
-  var color$1 = match[0];
+  var color = match[0];
   if (!match[1]) {
-    Belt_HashMapString.set(colorCache, cacheKey, color$1);
+    Belt_HashMapString.set(colorCache, cacheKey, color);
   }
-  return color$1;
+  return color;
 }
 
 var Colors = {
@@ -50,5 +53,6 @@ var Colors = {
   rainbowHSL: rainbowHSL
 };
 
+exports.avgFrameRate = avgFrameRate;
 exports.Colors = Colors;
 /* diagonalLength Not a pure module */

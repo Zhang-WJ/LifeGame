@@ -2,6 +2,7 @@
 'use strict';
 
 var Util = require("../lib/Util.bs.js");
+var CssJs = require("bs-css-emotion/src/CssJs.bs.js");
 var Curry = require("rescript/lib/js/curry.js");
 var React = require("react");
 var Config = require("../lib/Config.bs.js");
@@ -18,7 +19,27 @@ function getOrEmpty(str) {
 }
 
 function styles(background, shadow, tileSize, param) {
-  return "\n    width: " + tileSize + ";\n    height: " + tileSize + ";\n    background: " + background + "\n    box-shadow: " + shadow + "\n    border-radius: 50%;\n    margin: 2px 1px;\n    padding: 0;\n    transition-property: \"all\";\n    transition-duration: .1s;\n    transition-timing-function: ease-in-out;\n    cursor: pointer;\n  ";
+  return CssJs.style([
+              CssJs.label("Wrapper"),
+              CssJs.width(tileSize),
+              CssJs.height(tileSize),
+              CssJs.backgroundColor(background),
+              CssJs.borderRadius({
+                    NAME: "percent",
+                    VAL: 50
+                  }),
+              CssJs.margin2({
+                    NAME: "pxFloat",
+                    VAL: 2
+                  }, {
+                    NAME: "pxFloat",
+                    VAL: 1
+                  }),
+              CssJs.padding("zero"),
+              CssJs.unsafe("transitionProperty", "all"),
+              CssJs.transitionTimingFunction("easeInOut"),
+              CssJs.unsafe("cursor", "pointer")
+            ]);
 }
 
 function make(props) {
@@ -47,12 +68,13 @@ function Tile(Props) {
   var onToggle = Props.onToggle;
   var y = Props.y;
   var x = Props.x;
-  var aliveColor = Util.Colors.rainbowHSL(y, x);
+  var aliveColor = CssJs.hsl(CssJs.deg(Util.Colors.rainbowHSL(y, x)), CssJs.pct(100.0), CssJs.pct(60.0));
+  var deadColor = CssJs.hex("272B30");
   var match = isAlive ? [
       aliveColor,
       "0 0 0 0 " + aliveColor
     ] : [
-      "#272B30",
+      deadColor,
       ""
     ];
   var handleMouseEvent = React.useCallback((function (callback) {
@@ -66,7 +88,7 @@ function Tile(Props) {
   return React.createElement(make, {
               onMouseDown: Curry._1(handleMouseEvent, onToggle),
               onMouseOver: Curry._1(handleMouseEvent, onToggle),
-              tileSize: Config.tileSize,
+              tileSize: CssJs.rem(Config.tileSize),
               shadow: match[1],
               background: match[0]
             });

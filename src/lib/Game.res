@@ -36,10 +36,11 @@ let makeRandomGrid = (size: int, seed: int): grid => {
 
 let getTile = (grid, point): cellState => {
   let (y, x) = point->safePoint(grid->A.length)
+
   grid[y][x]
 }
 
-let offset = list{-1, 0, -1}
+let offset = list{-1, 0, 1}
 
 let getNeighbours = (grid, (y, x): point): list<cellState> => {
   offset
@@ -49,12 +50,12 @@ let getNeighbours = (grid, (y, x): point): list<cellState> => {
   ->L.map(grid->getTile)
 }
 
-let countLiveNeighbours = (grid, point): int => {
+let countLivingNeighbours = (grid, point): int => {
   grid->getNeighbours(point)->L.keep(c => c == Alive)->L.length
 }
 
 let nextState = (point, cellState, grid) => {
-  let neighbours = grid->countLiveNeighbours(point)
+  let neighbours = grid->countLivingNeighbours(point)
 
   switch (cellState, neighbours) {
   | (Alive, 2 | 3) => Alive

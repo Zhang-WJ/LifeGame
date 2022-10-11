@@ -4,7 +4,7 @@
 
 var boardSize = 32;
 
-var tileSize = ".75rem";
+var tileSize = 0.75;
 
 exports.boardSize = boardSize;
 exports.tileSize = tileSize;
