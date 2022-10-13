@@ -26,7 +26,7 @@ module.exports = {
       },
     plugins: [new HtmlWebpackPlugin({
         template: "./src/index.html",
-        title: "rescript"
+        title: "Game of Life"
     }),
     new MiniCssExtractPlugin({filename: "[name].css",
     chunkFilename: "[id].css",})]
